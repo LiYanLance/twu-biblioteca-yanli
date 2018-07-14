@@ -7,6 +7,7 @@ public class Movie {
     private String director;
     private int rating;
     private boolean isCheckedOut;
+    private String borrowerNumber;
 
     public Movie(String name, String director, int year, int rating) {
         this.name = name;
@@ -53,5 +54,13 @@ public class Movie {
 
     public void setCheckedOut(boolean checkedOut) {
         isCheckedOut = checkedOut;
+    }
+
+    public String getBorrowerNumber() {
+        return borrowerNumber;
+    }
+
+    public void setBorrowerNumber(String borrowerNumber) {
+        this.borrowerNumber = borrowerNumber;
     }
 }

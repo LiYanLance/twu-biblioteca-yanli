@@ -5,10 +5,20 @@ import java.util.List;
 public class BibliotecaApp {
 
     public static void main(String[] args) {
-        System.out.println("Welcome!");
-        System.out.println();
+
         View view = new View();
         Controller controller = new Controller();
+
+        System.out.println("Welcome!");
+        System.out.println();
+
+        User user;
+        while(true){
+            user = controller.login();
+            if (user != null) {
+                break;
+            }
+        }
 
         while(true) {
             view.printMenu();
@@ -19,7 +29,7 @@ public class BibliotecaApp {
                 case 2 :
                     view.showBookList(false);
                     System.out.println("Input the book title you want to check out:");
-                    if(controller.checkoutBook(InputHandler.getInput())){
+                    if(controller.checkoutBook(InputHandler.getInput(), user.getLibraryNumber())){
                         System.out.println("Thank you! Enjoy the book.\n");
                     } else {
                         System.out.println("That book is not available.\n");
@@ -41,7 +51,7 @@ public class BibliotecaApp {
                 case 5 :
                     view.showMovieList(false);
                     System.out.println("Input the movie name you want to check out:");
-                    if(controller.checkoutMovie(InputHandler.getInput())){
+                    if(controller.checkoutMovie(InputHandler.getInput(), user.getLibraryNumber())){
                         System.out.println("Thank you! Enjoy the movie.\n");
                     } else {
                         System.out.println("That movie is not available.\n");

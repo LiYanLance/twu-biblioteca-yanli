@@ -6,6 +6,7 @@ public class Book {
     private String author;
     private int publishedYear;
     private boolean isCheckedOut;
+    private String borrowerNumber;
 
     public Book(String title, String author, int publishedYear) {
         this.title = title;
@@ -43,5 +44,13 @@ public class Book {
 
     public void setCheckedOut(boolean checkedOut) {
         isCheckedOut = checkedOut;
+    }
+
+    public String getBorrowerNumber() {
+        return borrowerNumber;
+    }
+
+    public void setBorrowerNumber(String borrowerNumber) {
+        this.borrowerNumber = borrowerNumber;
     }
 }
