@@ -54,7 +54,7 @@ public class Controller {
         String number = InputHandler.getInput();
         System.out.println("Please enter your password:");
         String password = InputHandler.getInput();
-        User user = new User(number, password);
+        User user = new User(number, password, "name", "name@email", "1234567");
         return user;
     }
 }

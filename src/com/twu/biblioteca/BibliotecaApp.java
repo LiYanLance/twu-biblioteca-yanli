@@ -68,6 +68,13 @@ public class BibliotecaApp {
                     }
                     break;
                 case 7:
+                    StringBuilder stringBuilder = new StringBuilder();
+                    stringBuilder.append("name:\t").append(user.getName() + "\n")
+                            .append("email address:\t").append(user.getEmail() + "\n")
+                            .append("phone number:\t").append(user.getPhoneNumber() + "\n\n");
+                    System.out.println(stringBuilder.toString());
+                    break;
+                case 8:
                     System.out.println("Bye");
                     return;
                 default:

@@ -8,11 +8,6 @@ public class User {
     private String email;
     private String phoneNumber;
 
-    public User(String libraryNumber, String password) {
-        this.libraryNumber = libraryNumber;
-        this.password = password;
-    }
-
     public User(String libraryNumber, String password, String name, String email, String phoneNumber) {
         this.libraryNumber = libraryNumber;
         this.password = password;

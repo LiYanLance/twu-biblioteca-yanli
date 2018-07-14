@@ -12,7 +12,8 @@ public class View {
                 "4. List Movies \n" +
                 "5. Checkout Movie \n" +
                 "6. Return Movie\n" +
-                "7. Quit \n";
+                "7. User information\n" +
+                "8. Quit \n";
         System.out.println(menu);
     }
 
