@@ -1,35 +1,14 @@
 package com.twu.biblioteca;
 
-public class Movie {
+public class Movie extends Item{
 
-    private String name;
-    private int year;
     private String director;
     private int rating;
-    private boolean isCheckedOut;
-    private String borrowerNumber;
 
-    public Movie(String name, String director, int year, int rating) {
-        this.name = name;
-        this.year = year;
+    public Movie(String title, String director, int year, int rating) {
+        super(title, year, Type.MOVIE);
         this.director = director;
         this.rating = rating;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
     }
 
     public String getDirector() {
@@ -46,21 +25,5 @@ public class Movie {
 
     public void setRating(int rating) {
         this.rating = rating;
-    }
-
-    public boolean isCheckedOut() {
-        return isCheckedOut;
-    }
-
-    public void setCheckedOut(boolean checkedOut) {
-        isCheckedOut = checkedOut;
-    }
-
-    public String getBorrowerNumber() {
-        return borrowerNumber;
-    }
-
-    public void setBorrowerNumber(String borrowerNumber) {
-        this.borrowerNumber = borrowerNumber;
     }
 }

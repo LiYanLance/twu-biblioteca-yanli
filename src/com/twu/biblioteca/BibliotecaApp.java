@@ -9,70 +9,39 @@ public class BibliotecaApp {
         View view = new View();
         Controller controller = new Controller();
 
-        System.out.println("Welcome!");
-        System.out.println();
+        view.welcome();
 
-        User user;
-        while(true){
+        User user = null;
+        while (true) {
             user = controller.login();
             if (user != null) {
                 break;
             }
         }
 
-        while(true) {
+        while (true) {
             view.printMenu();
             switch (InputHandler.getInputNumber()) {
                 case 1:
-                    view.showBookList(false);
+                    view.showItemList(false, Item.Type.BOOK);
                     break;
-                case 2 :
-                    view.showBookList(false);
-                    System.out.println("Input the book title you want to check out:");
-                    if(controller.checkoutBook(InputHandler.getInput(), user.getLibraryNumber())){
-                        System.out.println("Thank you! Enjoy the book.\n");
-                    } else {
-                        System.out.println("That book is not available.\n");
-                    }
+                case 2:
+                    controller.checkout(user, Item.Type.BOOK);
                     break;
                 case 3:
-                    System.out.println("Checked out books:");
-                    view.showBookList(true);
-                    System.out.println("Input the book title you want to return:");
-                    if(controller.returnBook(InputHandler.getInput())){
-                        System.out.println("Thank you for returning the book.\n");
-                    } else {
-                        System.out.println("That is not a valid book to return.\n");
-                    }
+                    controller.returnBack(Item.Type.BOOK);
                     break;
                 case 4:
-                    view.showMovieList(false);
+                    view.showItemList(false, Item.Type.MOVIE);
                     break;
-                case 5 :
-                    view.showMovieList(false);
-                    System.out.println("Input the movie name you want to check out:");
-                    if(controller.checkoutMovie(InputHandler.getInput(), user.getLibraryNumber())){
-                        System.out.println("Thank you! Enjoy the movie.\n");
-                    } else {
-                        System.out.println("That movie is not available.\n");
-                    }
+                case 5:
+                    controller.checkout(user, Item.Type.MOVIE);
                     break;
                 case 6:
-                    System.out.println("Checked out movies:");
-                    view.showMovieList(true);
-                    System.out.println("Input the movie name you want to return:");
-                    if(controller.returnMovie(InputHandler.getInput())){
-                        System.out.println("Thank you for returning the movie.\n");
-                    } else {
-                        System.out.println("That is not a valid movie to return.\n");
-                    }
+                    controller.returnBack(Item.Type.MOVIE);
                     break;
                 case 7:
-                    StringBuilder stringBuilder = new StringBuilder();
-                    stringBuilder.append("name:\t").append(user.getName() + "\n")
-                            .append("email address:\t").append(user.getEmail() + "\n")
-                            .append("phone number:\t").append(user.getPhoneNumber() + "\n\n");
-                    System.out.println(stringBuilder.toString());
+                    view.displayUserInfomation(user);
                     break;
                 case 8:
                     System.out.println("Bye");
@@ -83,4 +52,5 @@ public class BibliotecaApp {
             }
         }
     }
+
 }

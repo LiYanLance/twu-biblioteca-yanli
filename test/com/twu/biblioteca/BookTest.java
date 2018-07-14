@@ -18,6 +18,6 @@ public class BookTest {
     @Test
     public void should_book_have_author_and_published_year(){
         assertThat(true, is("Author1".equals(book.getAuthor())));
-        assertThat(true, is(2015 == book.getPublishedYear()));
+        assertThat(true, is(2015 == book.getYear()));
     }
 }

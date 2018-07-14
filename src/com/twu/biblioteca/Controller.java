@@ -2,52 +2,9 @@ package com.twu.biblioteca;
 
 public class Controller {
 
-    private BookList bookList = new BookList();
-    private MovieList movieList = new MovieList();
+    private View view = new View();
+    private ItemList itemList = new ItemList();
 
-    public boolean checkoutBook(String title, String borrowerNumber) {
-        for(Book book : bookList.getBookList(false)){
-            if(book.getTitle().equals(title)){
-                book.setCheckedOut(true);
-                book.setBorrowerNumber(borrowerNumber);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean returnBook(String title) {
-        for(Book book : bookList.getBookList(true)){
-            if(book.isCheckedOut() && book.getTitle().equals(title)){
-                book.setCheckedOut(false);
-                book.setBorrowerNumber("");
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean checkoutMovie(String name, String borrowerNumber) {
-        for(Movie movie : movieList.getMovieList(false)){
-            if(movie.getName().equals(name)){
-                movie.setCheckedOut(true);
-                movie.setBorrowerNumber(borrowerNumber);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean returnMovie(String name) {
-        for(Movie movie : movieList.getMovieList(true)){
-            if(movie.isCheckedOut() && movie.getName().equals(name)){
-                movie.setCheckedOut(false);
-                movie.setBorrowerNumber("");
-                return true;
-            }
-        }
-        return false;
-    }
 
     public User login() {
         System.out.println("Please enter your library number:");
@@ -57,4 +14,52 @@ public class Controller {
         User user = new User(number, password, "name", "name@email", "1234567");
         return user;
     }
+
+
+    public void checkout(User user, Item.Type type) {
+        view.showItemList(false, type);
+        String ItemType = type == Item.Type.BOOK ? "book" : "movie";
+        System.out.println("Input the " + ItemType + " title you want to check out:");
+        if(checkoutItem(InputHandler.getInput(), user.getLibraryNumber(), type)){
+            System.out.println("Thank you! Enjoy the "+ ItemType + ".\n");
+        } else {
+            System.out.println("That " + ItemType + " is not available.\n");
+        }
+    }
+
+    public void returnBack(Item.Type type) {
+        String ItemType = type == Item.Type.BOOK ? "book" : "movie";
+        System.out.println("Checked out " + ItemType + "s:");
+        view.showItemList(true, type);
+        System.out.println("Input the " + ItemType + " title you want to return:");
+        if(returnItem(InputHandler.getInput(), type)){
+            System.out.println("Thank you for returning the " + ItemType + ".\n");
+        } else {
+            System.out.println("That is not a valid " + ItemType + " to return.\n");
+        }
+    }
+
+
+    public boolean checkoutItem(String title, String borrowerNumber, Item.Type type) {
+        for(Item item : itemList.getItemList(false, type)){
+            if(item.getTitle().equals(title)){
+                item.setCheckedOut(true);
+                item.setBorrowerNumber(borrowerNumber);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean returnItem(String title, Item.Type type) {
+        for(Item item : itemList.getItemList(true, type)){
+            if(item.isCheckedOut() && item.getTitle().equals(title)){
+                item.setCheckedOut(false);
+                item.setBorrowerNumber("");
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
