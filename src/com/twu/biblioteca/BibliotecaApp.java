@@ -9,13 +9,19 @@ public class BibliotecaApp {
         System.out.println();
         View view = new View();
 
-        view.printMenu();
-        switch (InputHandler.getInputNumber()){
-            case 1 : new View().showBookList(); break;
-            default:
-                System.out.println("Select a valid option!");
-                break;
+        while(true) {
+            view.printMenu();
+            switch (InputHandler.getInputNumber()) {
+                case 1:
+                    new View().showBookList();
+                    break;
+                case 2:
+                    System.out.println("Bye");
+                    return;
+                default:
+                    System.out.println("Select a valid option!\n");
+                    break;
+            }
         }
-
     }
 }

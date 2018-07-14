@@ -6,7 +6,8 @@ public class View {
 
 
     public void printMenu(){
-        String menu = "1. List Books\n";
+        String menu = "1. List Books \n" +
+                "2. Quit \n";
         System.out.println(menu);
     }
 
