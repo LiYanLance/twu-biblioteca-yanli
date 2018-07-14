@@ -12,7 +12,9 @@ public class BibliotecaApp {
         view.printMenu();
         switch (InputHandler.getInputNumber()){
             case 1 : new View().showBookList(); break;
-            default: break;
+            default:
+                System.out.println("Select a valid option!");
+                break;
         }
 
     }
