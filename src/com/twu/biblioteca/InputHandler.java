@@ -10,4 +10,8 @@ public class InputHandler {
         return scanner.nextInt();
     }
 
+    public static String getInput(){
+        return scanner.next();
+    }
+
 }

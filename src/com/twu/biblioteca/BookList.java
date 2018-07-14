@@ -5,9 +5,9 @@ import java.util.List;
 
 public class BookList {
 
-    List<Book> books = new ArrayList<Book>();
+    public static List<Book> books = new ArrayList<Book>();
 
-    public BookList() {
+    static{
         books.add(new Book("Book1", "Author1",2014));
         books.add(new Book("Book2", "Author2",2015));
         books.add(new Book("Book3", "Author3",2016));
@@ -17,5 +17,15 @@ public class BookList {
 
     public List<Book> getBooks(){
         return books;
+    }
+
+    public List<Book> getUncheckedOutBooks() {
+        List<Book> result = new ArrayList<Book>();
+        for (Book book : books) {
+            if(!book.isCheckedOut()){
+                result.add(book);
+            }
+        }
+        return result;
     }
 }

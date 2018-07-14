@@ -7,14 +7,15 @@ public class View {
 
     public void printMenu(){
         String menu = "1. List Books \n" +
-                "2. Quit \n";
+                "2. Checkout Book \n" +
+                "3. Quit \n";
         System.out.println(menu);
     }
 
 
     public void showBookList(){
         StringBuilder stringBuilder = new StringBuilder();
-        List<Book> books = new BookList().getBooks();
+        List<Book> books = new BookList().getUncheckedOutBooks();
         stringBuilder.append("Title\t").append("Author\t").append("Year Published\t\n");
         for(Book book : books){
             stringBuilder.append(book.getTitle() + "\t")
