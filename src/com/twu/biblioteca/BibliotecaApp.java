@@ -36,6 +36,28 @@ public class BibliotecaApp {
                     }
                     break;
                 case 4:
+                    view.showMovieList(false);
+                    break;
+                case 5 :
+                    view.showMovieList(false);
+                    System.out.println("Input the movie name you want to check out:");
+                    if(controller.checkoutMovie(InputHandler.getInput())){
+                        System.out.println("Thank you! Enjoy the movie.\n");
+                    } else {
+                        System.out.println("That movie is not available.\n");
+                    }
+                    break;
+                case 6:
+                    System.out.println("Checked out movies:");
+                    view.showMovieList(true);
+                    System.out.println("Input the movie name you want to return:");
+                    if(controller.returnMovie(InputHandler.getInput())){
+                        System.out.println("Thank you for returning the movie.\n");
+                    } else {
+                        System.out.println("That is not a valid movie to return.\n");
+                    }
+                    break;
+                case 7:
                     System.out.println("Bye");
                     return;
                 default:

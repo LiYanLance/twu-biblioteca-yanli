@@ -9,7 +9,10 @@ public class View {
         String menu = "1. List Books \n" +
                 "2. Checkout Book \n" +
                 "3. Return Book\n" +
-                "4. Quit \n";
+                "4. List Movies \n" +
+                "5. Checkout Movie \n" +
+                "6. Return Movie\n" +
+                "7. Quit \n";
         System.out.println(menu);
     }
 
@@ -23,6 +26,20 @@ public class View {
             stringBuilder.append(book.getTitle() + "\t")
                     .append(book.getAuthor() + "\t")
                     .append(book.getPublishedYear() + "\t\n");
+        }
+        System.out.println(stringBuilder.toString());
+    }
+
+    public void showMovieList(boolean isCheckedOut) {
+        StringBuilder stringBuilder = new StringBuilder();
+        MovieList movieList = new MovieList();
+        List<Movie> movies = isCheckedOut ? movieList.getMovieList(isCheckedOut) : movieList.getMovieList(isCheckedOut);
+        stringBuilder.append("Name\t").append("Director\t").append("Year\t").append("Rating\n");
+        for(Movie movie : movies){
+            stringBuilder.append(movie.getName() + "\t")
+                    .append(movie.getDirector() + "\t")
+                    .append(movie.getYear() + "\t")
+                    .append(movie.getRating() + "\t\n");
         }
         System.out.println(stringBuilder.toString());
     }
