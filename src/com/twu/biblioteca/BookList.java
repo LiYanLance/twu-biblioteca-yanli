@@ -19,10 +19,10 @@ public class BookList {
         return books;
     }
 
-    public List<Book> getUncheckedOutBooks() {
+    public List<Book> getBookList(boolean isCheckedOut) {
         List<Book> result = new ArrayList<Book>();
         for (Book book : books) {
-            if(!book.isCheckedOut()){
+            if(book.isCheckedOut() == isCheckedOut){
                 result.add(book);
             }
         }
